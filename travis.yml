@@ -1,0 +1,22 @@
+sudo: required
+
+language: node_js
+  - "6.1"
+
+services:
+  - docker
+
+before_script:
+  - cd $TRAVIS_BUILD_DIR
+  - cd src
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - npm install
+
+after_success:
+  - cd $TRAVIS_BUILD_DIR
+
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    branch: master
