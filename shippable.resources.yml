@@ -1,0 +1,7 @@
+resources:
+  - name: dockerhub               
+    type: image                   
+    integration: docker           
+    pointer:
+      sourceName: "davecss/result"
+    
