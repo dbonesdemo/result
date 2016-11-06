@@ -16,10 +16,11 @@ before_script:
 
 after_success:
   - cd $TRAVIS_BUILD_DIR
+  - docker build -t "davecss/result" .
 
 deploy:
   provider: script
   skip_cleanup: true
-  script: deploy.sh
+  script: docker push davecss/result
   on:
     branch: master
