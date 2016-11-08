@@ -8,11 +8,13 @@ node_js:
 services:
   - docker
 
-before_script:
+install:
   - cd $TRAVIS_BUILD_DIR
   - cd src
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - npm install
+
+before_script:
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
 after_success:
   - cd $TRAVIS_BUILD_DIR
