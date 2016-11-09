@@ -14,7 +14,7 @@ install:
   - npm install
 
 before_script:
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; fi'
 
 after_success:
   - cd $TRAVIS_BUILD_DIR
